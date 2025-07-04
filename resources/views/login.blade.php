@@ -110,9 +110,9 @@
       <img src="{{ asset('loginlogo.jpg') }}" alt="Persib Logo" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;" />
     </div>
     <div class="login-title">Persib Official Store</div>
-    <!-- @if($errors->any()) -->
-    <!-- <div class="error-message">{{ $errors->first() }}</div> -->
-    <!-- @endif -->
+     @if($errors->any()) 
+     <div class="error-message">{{ $errors->first() }}</div> 
+    @endif
     <form method="POST" action="{{ route('login') }}">
       @csrf
       <input

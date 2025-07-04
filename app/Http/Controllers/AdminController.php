@@ -9,12 +9,12 @@ class AdminController extends Controller
 {
     public function logActivity(Request $request)
     {
-        $query = \DB::table('tbl_log');
-        if ($request->filled('tanggal')) {
-            $query->whereDate('waktu', $request->tanggal);
-        }
-        $logs = $query->orderBy('waktu', 'desc')->get();
-        return view('admin_log', compact('logs'));
+$query = \DB::table('tbl_log')->orderBy('waktu', 'desc');
+if ($request->filled('tanggal')) {
+    $query->whereDate('waktu', $request->tanggal);
+}
+$logs = $query->paginate(10)->withQueryString();
+return view('admin_log', compact('logs'));
     }
     public function kelolaUser(Request $request)
     {
@@ -33,7 +33,7 @@ class AdminController extends Controller
         $user = \App\Models\User::findOrFail($id);
         $user->delete();
 
-        return redirect()->route('kelola.user')->with('success', 'User berhasil dihapus.');
+        return redirect()->back()->with('success_delete', 'Data berhasil dihapus.');
     }
     public function updateUser(Request $request)
     {
@@ -57,29 +57,55 @@ class AdminController extends Controller
         }
         $user->save();
 
-        return redirect()->route('kelola.user')->with('success', 'User berhasil diupdate.');
+        return redirect()->back()->with('success_edit', 'Data berhasil diedit.');
     }
     public function simpanUser(Request $request)
     {
-        $request->validate([
-            'tipe_user' => 'required',
-            'nama' => 'required',
-            'alamat' => 'required',
-            'telpon' => 'required',
-            'username' => 'required|unique:tbl_user,username',
-            'password' => 'required|min:4',
-        ]);
+        if ($request->mode == 'edit') {
+            // Validasi edit (username boleh sama asal milik user ini)
+            $request->validate([
+                'id_user' => 'required|exists:tbl_user,id_user',
+                'tipe_user' => 'required',
+                'nama' => 'required',
+                'alamat' => 'required',
+                'telpon' => 'required',
+                'username' => 'required|unique:tbl_user,username,' . $request->id_user . ',id_user',
+            ]);
 
-        \App\Models\User::create([
-            'tipe_user' => $request->tipe_user,
-            'nama' => $request->nama,
-            'alamat' => $request->alamat,
-            'telpon' => $request->telpon,
-            'username' => $request->username,
-            'password' => bcrypt($request->password),
-        ]);
+            $user = \App\Models\User::findOrFail($request->id_user);
+            $user->tipe_user = $request->tipe_user;
+            $user->nama = $request->nama;
+            $user->alamat = $request->alamat;
+            $user->telpon = $request->telpon;
+            $user->username = $request->username;
+            if ($request->filled('password')) {
+                $user->password = bcrypt($request->password);
+            }
+            $user->save();
 
-        return redirect()->route('kelola.user')->with('success', 'User berhasil ditambahkan.');
+            return redirect()->back()->with('success_edit', 'Data berhasil diedit.');
+        } else {
+            // Validasi tambah
+            $request->validate([
+                'tipe_user' => 'required',
+                'nama' => 'required',
+                'alamat' => 'required',
+                'telpon' => 'required',
+                'username' => 'required|unique:tbl_user,username',
+                'password' => 'required|min:4',
+            ]);
+
+            \App\Models\User::create([
+                'tipe_user' => $request->tipe_user,
+                'nama' => $request->nama,
+                'alamat' => $request->alamat,
+                'telpon' => $request->telpon,
+                'username' => $request->username,
+                'password' => bcrypt($request->password),
+            ]);
+
+            return redirect()->back()->with('success_add', 'Data berhasil ditambah.');
+        }
     }
     public function kelolaLaporan(Request $request) {
         $query = \DB::table('tbl_transaksi')

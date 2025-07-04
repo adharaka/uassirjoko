@@ -12,24 +12,20 @@
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #e0f2f7, #c6e7f2);
-            /* Latar belakang gradien biru muda */
         }
 
         .sidebar {
             min-height: 100vh;
             background: #0066CC;
-            /* Biru Persib */
             padding: 40px 20px 20px 20px;
             box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
             color: #fff;
-            /* Teks putih untuk sidebar */
         }
 
         .sidebar .admin-avatar {
             width: 90px;
             height: 90px;
             background: #ffffff;
-            /* Aksen Emas/Kuning */
             border-radius: 50%;
             margin: 0 auto 20px auto;
             display: flex;
@@ -37,9 +33,7 @@
             justify-content: center;
             font-size: 48px;
             color: #0066CC;
-            /* Ikon Biru Persib */
             border: 3px solid #005BB5;
-            /* Border biru sedikit lebih gelap */
         }
 
         .sidebar h4 {
@@ -47,7 +41,6 @@
             margin-bottom: 30px;
             font-weight: bold;
             color: #fff;
-            /* Teks putih untuk nama admin */
         }
 
         .sidebar .btn {
@@ -69,21 +62,17 @@
 
         .sidebar .btn-primary {
             background-color: #ffffff;
-            /* Tombol aktif Emas/Kuning */
             border-color: #FFD700;
             color: #0066CC;
-            /* Teks Biru Persib pada tombol aktif */
         }
 
         .sidebar .btn-primary:hover {
             background-color: #e6c200;
-            /* Emas/kuning lebih gelap saat hover */
             border-color: #e6c200;
         }
 
         .sidebar .btn-danger {
             background-color: #dc3545;
-            /* Merah standar untuk logout */
             border-color: #dc3545;
         }
 
@@ -95,19 +84,16 @@
         .content-area {
             padding: 40px 30px;
             color: #333;
-            /* Teks lebih gelap untuk konten */
         }
 
         .card {
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            /* Bayangan lebih kuat untuk kedalaman */
             border: none;
         }
 
         .card-header {
             background-color: #0066CC;
-            /* Header Biru Persib */
             color: #fff;
             border-top-left-radius: 16px;
             border-top-right-radius: 16px;
@@ -121,7 +107,6 @@
             padding: 15px;
             border-radius: 10px;
             background-color: #f0f8ff;
-            /* Latar belakang biru muda untuk filter */
             border: 1px solid #cfe2ff;
         }
 
@@ -133,7 +118,6 @@
 
         .btn-success {
             background-color: #28a745;
-            /* Hijau standar untuk tombol filter */
             border-color: #28a745;
             font-weight: 500;
             border-radius: 8px;
@@ -146,9 +130,7 @@
 
         .table {
             --bs-table-striped-bg: #f5fafd;
-            /* Garis zebra lebih terang untuk tabel */
             --bs-table-hover-bg: #e6f3fb;
-            /* Biru muda saat hover */
         }
 
         .table th,
@@ -156,12 +138,10 @@
             vertical-align: middle;
             padding: 12px 15px;
             border-color: #dee2e6;
-            /* Border lebih terang untuk sel tabel */
         }
 
         .table thead.table-light th {
             background-color: #005BB5;
-            /* Biru Persib lebih gelap untuk header tabel */
             color: #fff;
             border-bottom: 2px solid #004a99;
         }
@@ -192,7 +172,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-4 sidebar d-flex flex-column align-items-center">
                 <div class="admin-avatar mb-3">
-                    <img src="{{ asset('iconadmin.webp') }}" alt="Admin Icon"
+                    <img src="{{ asset('admin.jpeg') }}" alt="Admin Icon"
                         style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover;">
                 </div>
                 <h4>Admin</h4>
@@ -235,7 +215,7 @@
                                 <tbody>
                                     @forelse($logs as $log)
                                         <tr>
-                                            <td>{{ $log->id_log }}</td>
+                                           <td>{{ $log->id }}</td>
                                             <td>{{ $log->waktu }}</td>
                                             <td>{{ $log->aktivitas }}</td>
                                             <td>{{ $log->id_user }}</td>
@@ -247,6 +227,10 @@
                                     @endforelse
                                 </tbody>
                             </table>
+                            {{-- PAGINATION --}}
+                            <div class="d-flex justify-content-center mt-3">
+                                {{ $logs->links('pagination::bootstrap-5') }}
+                            </div>
                         </div>
                     </div>
                 </div>

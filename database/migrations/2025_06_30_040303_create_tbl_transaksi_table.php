@@ -12,17 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tbl_transaksi', function (Blueprint $table) {
-            $table->increments('id_transaksi'); // primary key auto increment 
-            $table->string('no_transaksi', 50)->nullable(false); // nvarchar(50), required 
-            $table->date('tgl_transaksi')->nullable(false); // date, required 
-            $table->bigInteger('total_bayar')->nullable(false); // bigint, required 
-            $table->integer('id_user')->nullable(false); // fk, int, required 
-            $table->integer('id_barang')->nullable(false); // fk, int, required 
+            $table->increments('id_transaksi');
+            $table->string('no_transaksi', 50)->nullable(false);
+            $table->date('tgl_transaksi')->nullable(false);
+            $table->bigInteger('total_bayar')->nullable(false);
+            $table->integer('id_user')->nullable(false);
+            $table->integer('id_barang')->nullable(false); 
 
             // Menambahkan Foreign Keys
-            $table->foreign('id_user')->references('id_user')->on('tbl_user')->onDelete('restrict');
-            $table->foreign('id_barang')->references('id_barang')->on('tbl_barang')->onDelete('restrict');
-            // $table->timestamps();
+            $table->foreign('id_user')->references('id_user')->on('tbl_user')->onDelete('cascade');
+            $table->foreign('id_barang')->references('id_barang')->on('tbl_barang')->onDelete('cascade');
         });
     }
 

@@ -1,0 +1,287 @@
+body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e0f2f7, #c6e7f2);
+            /* Latar belakang gradien biru muda */
+        }
+
+        .sidebar {
+            min-height: 100vh;
+            background: #0066CC;
+            /* Biru Persib */
+            padding: 40px 20px 20px 20px;
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+            color: #fff;
+            /* Teks putih untuk sidebar */
+        }
+
+        .sidebar .admin-avatar {
+            width: 90px;
+            height: 90px;
+            background: #ffffff;
+            /* Aksen Emas/Kuning */
+            border-radius: 50%;
+            margin: 0 auto 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #0066CC;
+            /* Ikon Biru Persib */
+            border: 3px solid #005BB5;
+            /* Border biru sedikit lebih gelap */
+        }
+
+        .sidebar h4 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+            color: #fff;
+            /* Teks putih untuk nama admin */
+        }
+
+        .sidebar .btn {
+            width: 100%;
+            margin-bottom: 15px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar .btn-outline-primary {
+            color: #fff;
+            border-color: #fff;
+        }
+
+        .sidebar .btn-outline-primary:hover {
+            background-color: #fff;
+            color: #0066CC;
+        }
+
+        .sidebar .btn-primary {
+            background-color: #ffffff;
+            /* Tombol aktif Emas/Kuning */
+            border-color: #FFD700;
+            color: #0066CC;
+            /* Teks Biru Persib pada tombol aktif */
+        }
+
+        .sidebar .btn-primary:hover {
+            background-color: #e6c200;
+            /* Emas/kuning lebih gelap saat hover */
+            border-color: #e6c200;
+        }
+
+        .sidebar .btn-danger {
+            background-color: #dc3545;
+            /* Merah standar untuk logout */
+            border-color: #dc3545;
+        }
+
+        .sidebar .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+
+        .content-area {
+            padding: 40px 30px;
+            color: #333;
+            /* Teks lebih gelap untuk konten */
+        }
+
+        .card {
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            /* Bayangan lebih kuat untuk kedalaman */
+            border: none;
+        }
+
+        .card-header {
+            background-color: #0066CC;
+            /* Header Biru Persib */
+            color: #fff;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            padding: 20px;
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-control,
+        .form-select {
+            border-radius: 8px;
+            border: 1px solid #ced4da;
+            padding: 10px 15px;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            /* Hijau standar */
+            border-color: #28a745;
+            font-weight: 500;
+            border-radius: 8px;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            /* Kuning standar */
+            border-color: #ffc107;
+            color: #333;
+            /* Teks gelap pada tombol kuning */
+            font-weight: 500;
+            border-radius: 8px;
+        }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+            border-color: #d39e00;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            /* Merah standar */
+            border-color: #dc3545;
+            font-weight: 500;
+            border-radius: 8px;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+
+        .search-box {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #f0f8ff;
+            /* Latar belakang biru muda untuk kotak cari */
+            border: 1px solid #cfe2ff;
+        }
+
+        .table {
+            --bs-table-striped-bg: #f5fafd;
+            /* Garis zebra lebih terang untuk tabel */
+            --bs-table-hover-bg: #e6f3fb;
+            /* Biru muda saat hover */
+        }
+
+        .table th,
+        .table td {
+            vertical-align: middle;
+            padding: 12px 15px;
+            border-color: #dee2e6;
+            /* Border lebih terang untuk sel tabel */
+        }
+
+        .table thead.table-light th {
+            background-color: #005BB5;
+            /* Biru Persib lebih gelap untuk header tabel */
+            color: #fff;
+            border-bottom: 2px solid #004a99;
+        }
+
+        .text-muted {
+            color: #6c757d !important;
+        }
+
+        @media (max-width: 991px) {
+            .sidebar {
+                min-height: auto;
+                padding-bottom: 20px;
+            }
+
+            .content-area {
+                padding: 20px 15px;
+            }
+
+            .sidebar .btn {
+                margin-bottom: 10px;
+            }
+        }
+
+        .custom-alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    min-width: 340px;
+    z-index: 9999;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    padding: 1.3rem 2.2rem;
+    opacity: 1;
+    animation: popIn 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+    transition: opacity 0.5s, transform 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    backdrop-filter: blur(6px);
+    border: 2px solid #e0e0e0;
+}
+.custom-alert-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+.custom-alert i {
+    font-size: 2.2rem;
+    margin-right: 0.5rem;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.08));
+    animation: iconPop 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+}
+.custom-alert-success {
+    background: linear-gradient(90deg, #e0ffe7 0%, #b7ffd8 100%);
+    color: #218838;
+    border-color: #b7ffd8;
+}
+.custom-alert-warning {
+    background: linear-gradient(90deg, #fffbe7 0%, #ffe7b7 100%);
+    color: #856404;
+    border-color: #ffe7b7;
+}
+.custom-alert-danger {
+    background: linear-gradient(90deg, #ffe7e7 0%, #ffb7b7 100%);
+    color: #721c24;
+    border-color: #ffb7b7;
+}
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -60%) scale(0.7);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+@keyframes iconPop {
+    0% {
+        transform: scale(0.3) rotate(-20deg);
+        opacity: 0;
+    }
+    80% {
+        transform: scale(1.2) rotate(10deg);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+.custom-alert.hide {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+    pointer-events: none;
+}
